@@ -6,54 +6,249 @@
 <title>Technology Services</title>
 <style>
   :root{
-    --navy:#1d3a4a; --navy-deep:#1c3644; --gold:#c9a24b; --cream:#fdfcfa;
-    --ink:#22303a; --muted:#5c6b75;
+  --primary-blue:#1E4FAE;
+  --primary-orange:#F7941D;
+  --bg:#f8fafc;
+  --white:#ffffff;
+  --text-dark:#2d3748;
+  --text-light:#6b7280;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--text-dark);
+  line-height:1.6;
+}
+
+.page-title-bar{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  padding:36px 5% 28px;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.page-title-bar h1{
+  font-size:2.1rem;
+  color:var(--primary-blue);
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.page-title-bar .rule{
+  flex:1;
+  height:3px;
+  background:var(--primary-orange);
+}
+
+.back-wrap{
+  max-width:1200px;
+  margin:0 auto;
+  padding:20px 5%;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.back-link{
+  color:var(--primary-blue);
+  text-decoration:none;
+  font-size:.9rem;
+  font-weight:600;
+  border:2px solid var(--primary-blue);
+  padding:10px 20px;
+  border-radius:50px;
+  transition:.3s;
+}
+
+.back-link:hover{
+  background:var(--primary-blue);
+  color:#fff;
+}
+
+.intro-banner{
+  background:linear-gradient(135deg,#1E4FAE,#16408e);
+  color:#fff;
+  text-align:center;
+  max-width:1200px;
+  margin:0 auto;
+  padding:50px 6%;
+  border-radius:20px 20px 0 0;
+}
+
+.intro-banner h2{
+  font-size:2.4rem;
+  font-weight:700;
+  margin-bottom:15px;
+}
+
+.intro-banner p{
+  max-width:760px;
+  margin:auto;
+  color:#dbe7ff;
+}
+
+.service-grid{
+  max-width:1200px;
+  margin:0 auto;
+  background:#fff;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:320px;
+  transition:.4s ease;
+}
+
+.row:hover{
+  background:#fff;
+  box-shadow:0 15px 40px rgba(30,79,174,.08);
+}
+
+.row.flip{
+  direction:rtl;
+}
+
+.row.flip>*{
+  direction:ltr;
+}
+
+.img-cell{
+  position:relative;
+  overflow:hidden;
+  min-height:320px;
+}
+
+.img-cell img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  position:absolute;
+  inset:0;
+  transition:transform .7s ease, filter .7s ease;
+}
+
+.row:hover .img-cell img{
+  transform:scale(1.08);
+  filter:brightness(1.08);
+}
+
+.img-cell::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+      to top,
+      rgba(30,79,174,.20),
+      transparent
+  );
+  opacity:0;
+  transition:.4s;
+}
+
+.row:hover .img-cell::after{
+  opacity:1;
+}
+
+.img-cell .ph{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,#1E4FAE,#16408e);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.img-cell .ph svg{
+  width:70px;
+  height:70px;
+  stroke:var(--primary-orange);
+  fill:none;
+  stroke-width:1.5;
+}
+
+.text-cell{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:50px 7%;
+}
+
+.text-cell h3{
+  font-size:2rem;
+  color:var(--primary-blue);
+  font-weight:700;
+  margin-bottom:18px;
+  line-height:1.2;
+}
+
+.text-cell .gold-rule{
+  width:90px;
+  height:4px;
+  background:var(--primary-orange);
+  border-radius:50px;
+  margin-bottom:20px;
+}
+
+.text-cell p{
+  color:var(--text-light);
+  font-size:1.05rem;
+  max-width:450px;
+}
+
+.row.flip .text-cell{
+  text-align:right;
+}
+
+.row.flip .gold-rule{
+  margin-left:auto;
+}
+
+.row.flip p{
+  margin-left:auto;
+}
+
+@media(max-width:860px){
+
+  .row,
+  .row.flip{
+    grid-template-columns:1fr;
+    direction:ltr;
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Georgia','Times New Roman',serif;background:var(--cream);color:var(--ink);line-height:1.6;}
-  .sans{font-family:'Helvetica Neue',Arial,sans-serif;}
 
-  .page-title-bar{display:flex;align-items:center;gap:24px;padding:36px 5% 28px;max-width:1200px;margin:0 auto;}
-  .page-title-bar h1{font-size:2.1rem;color:var(--navy);letter-spacing:1px;font-weight:600;white-space:nowrap;}
-  .page-title-bar .rule{flex:1;height:2px;background:var(--navy);}
-
-  .back-wrap{max-width:1200px;margin:0 auto;padding:0 5% 10px;display:flex;justify-content:flex-end;}
-  .back-link{font-family:'Helvetica Neue',Arial,sans-serif;color:var(--gold);text-decoration:none;font-size:0.9rem;letter-spacing:1px;border:1px solid var(--gold);padding:8px 18px;border-radius:999px;transition:all .25s ease;}
-  .back-link:hover{background:var(--gold);color:#fff;}
-
-  .intro-banner{background:var(--navy-deep);color:#fff;text-align:center;max-width:1200px;margin:0 auto 0;padding:34px 6% 38px;}
-  .intro-banner h2{font-size:2.4rem;letter-spacing:2px;font-weight:600;margin-bottom:14px;}
-  .intro-banner p{font-family:'Helvetica Neue',Arial,sans-serif;font-size:1.05rem;color:#dfe6ea;max-width:760px;margin:0 auto;}
-
-  .service-grid{max-width:1200px;margin:0 auto;}
-  .row{display:grid;grid-template-columns:1fr 1fr;min-height:300px;}
-  .row.flip{direction:rtl;}
-  .row.flip > *{direction:ltr;}
-
-  .img-cell{position:relative;overflow:hidden;min-height:300px;}
-  .img-cell .ph{position:absolute;inset:0;background:linear-gradient(135deg,var(--navy) 0%, var(--navy-deep) 100%);display:flex;align-items:center;justify-content:center;}
-  .img-cell .ph::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 25%, rgba(201,162,75,0.28), transparent 60%);}
-  .img-cell .ph svg{width:70px;height:70px;stroke:var(--gold);fill:none;stroke-width:1.3;position:relative;z-index:2;}
-  .img-cell img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;}
-
-  .text-cell{display:flex;flex-direction:column;justify-content:center;padding:48px 7%;}
-  .text-cell h3{font-size:1.9rem;color:var(--navy);font-weight:600;letter-spacing:0.5px;margin-bottom:16px;line-height:1.25;}
-  .text-cell .gold-rule{width:90px;height:2px;background:var(--gold);margin-bottom:20px;}
-  .text-cell p{font-family:'Helvetica Neue',Arial,sans-serif;color:var(--muted);font-size:1.05rem;max-width:420px;}
-  .row .text-cell{text-align:left;}
-  .row.flip .text-cell{text-align:right;}
-  .row.flip .text-cell .gold-rule{margin-left:auto;}
-  .row.flip .text-cell p{margin-left:auto;}
-
-  @media (max-width:860px){
-    .row, .row.flip{grid-template-columns:1fr;direction:ltr;}
-    .img-cell{min-height:240px;}
-    .text-cell{padding:36px 8%;text-align:left !important;}
-    .text-cell .gold-rule{margin-left:0 !important;}
-    .text-cell p{margin-left:0 !important;}
-    .page-title-bar h1{font-size:1.6rem;}
-    .intro-banner h2{font-size:1.8rem;}
+  .img-cell{
+    min-height:250px;
   }
+
+  .text-cell{
+    text-align:left !important;
+    padding:35px 8%;
+  }
+
+  .row.flip .gold-rule{
+    margin-left:0;
+  }
+
+  .row.flip p{
+    margin-left:0;
+  }
+
+  .page-title-bar h1{
+    font-size:1.7rem;
+  }
+
+  .intro-banner h2{
+    font-size:2rem;
+  }
+}
 </style>
 </head>
 <body>
@@ -69,7 +264,7 @@
 
 <div class="intro-banner">
   <h2>TECHNOLOGY</h2>
-  <p>We blend creativity with technology to bring ideas to life:</p>
+  <p>We blend creativity with technology to bring ideas to life through innovative digital solutions.</p>
 </div>
 
 <div class="service-grid">
@@ -82,7 +277,7 @@
     <div class="text-cell">
       <h3>INNOVATIVE PRODUCT<br>DEVELOPMENT &amp; LAUNCH</h3>
       <div class="gold-rule"></div>
-      <p>Cutting-edge solutions for bringing new products to market.</p>
+      <p>Cutting-edge solutions for bringing new products to market with speed and precision.</p>
     </div>
   </div>
 
@@ -94,7 +289,7 @@
     <div class="text-cell">
       <h3>CREATIVE MIND<br>INTEGRATION</h3>
       <div class="gold-rule"></div>
-      <p>Merging imaginative concepts with practical execution.</p>
+      <p>Merging imaginative concepts with practical execution for outstanding results.</p>
     </div>
   </div>
 
@@ -106,7 +301,7 @@
     <div class="text-cell">
       <h3>3D PROTOTYPING<br>&amp; RENDERS</h3>
       <div class="gold-rule"></div>
-      <p>Realistic 3D prototypes and renders for product visualization.</p>
+      <p>Realistic 3D prototypes and renders for immersive product visualization.</p>
     </div>
   </div>
 
@@ -118,7 +313,7 @@
     <div class="text-cell">
       <h3>GRAPHIC<br>ILLUSTRATIONS</h3>
       <div class="gold-rule"></div>
-      <p>Transforming ideas into captivating visual representations.</p>
+      <p>Transforming ideas into captivating visual representations that speak your brand.</p>
     </div>
   </div>
 
